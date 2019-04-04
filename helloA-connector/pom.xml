@@ -25,10 +25,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>helloA-ejb</artifactId>
-    <packaging>ejb</packaging>
+    <artifactId>helloA-connector</artifactId>
 
-    <name>helloA: EJB Module</name>
+    <name>helloA: connector Module</name>
 
     <url>http://wildfly.org</url>
     <licenses>
@@ -157,8 +156,6 @@
                 </plugins>
             </build>
         </profile>
-
-
 
         <profile>
             <!-- An optional Arquillian testing profile that executes tests 

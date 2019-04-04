@@ -36,6 +36,7 @@
         <module>helloA-ejb</module>
         <module>helloA-web</module>
         <module>helloA-ear</module>
+        <module>helloA-connector</module>
     </modules>
 
     <properties>
@@ -76,6 +77,13 @@
                 <artifactId>helloA-ejb</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
+            </dependency>
+
+
+            <dependency>
+                <groupId>helloG</groupId>
+                <artifactId>helloA-connector</artifactId>
+                <version>${project.version}</version>
             </dependency>
             
             <!-- Define the version of the WAR so that we don't need to repeat 
