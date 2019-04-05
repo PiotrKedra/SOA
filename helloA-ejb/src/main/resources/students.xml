@@ -41,7 +41,7 @@
     </student>
     <student>
         <id>5</id>
-        <first_name>Zbychu123</first_name>
+        <first_name>Zbu123</first_name>
         <last_name>Stannas</last_name>
         <email>astannas4@umn.edu</email>
         <courses>
@@ -154,4 +154,4 @@
             <course>SOA2</course>
         </courses>
     </student>
-<student><id>24</id><first_name>2Karo</first_name><last_name>2Lina</last_name><email>wp.pl</email><courses><course>SOA</course><course>SOA2</course></courses></student></students>
+<student><id>24</id><first_name>2Karo</first_name><last_name>2Lina</last_name><email>wp.pl</email><courses><course>SOA</course><course>SOA2</course></courses></student><student><id>51</id><first_name>Ziomek</first_name><last_name>Mat</last_name><email>wp@wp.pl</email><courses><course>KOR</course><course>WOR</course></courses></student><student><id>51</id><first_name>Ziomek</first_name><last_name>Mat</last_name><email>wp@wp.pl</email><courses><course>KOR</course><course>WOR</course></courses></student><student><id>51</id><first_name>Ziomek</first_name><last_name>Mat</last_name><email>wp@wp.pl</email><courses><course>KOR</course><course>WOR</course></courses></student><student><id>51</id><first_name>Ziomek</first_name><last_name>Mat</last_name><email>wp@wp.pl</email><courses><course>KOR</course><course>WOR</course></courses></student></students>
