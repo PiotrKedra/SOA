@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_outer_classname = "StudentProtos";
+
+option java_package = "messages";
+
+message Album {
+
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string email = 4;
+    repeated string courses = 5;
+    string avatar = 6;
+}

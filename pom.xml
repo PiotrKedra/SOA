@@ -33,15 +33,16 @@
         </license>
     </licenses>
     <modules>
-        <module>helloA-ejb</module>
+        <module>soap-api</module>
         <module>helloA-web</module>
         <module>helloA-ear</module>
-        <module>helloA-connector</module>
+        <module>soap-connector</module>
+        <module>rest-connector</module>
     </modules>
 
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following 
-            message: -->
+            messages: -->
         <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
             resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,7 +75,7 @@
                 to repeat ourselves in every module -->
             <dependency>
                 <groupId>helloG</groupId>
-                <artifactId>helloA-ejb</artifactId>
+                <artifactId>soap-api</artifactId>
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
@@ -82,7 +83,7 @@
 
             <dependency>
                 <groupId>helloG</groupId>
-                <artifactId>helloA-connector</artifactId>
+                <artifactId>soap-connector</artifactId>
                 <version>${project.version}</version>
             </dependency>
             

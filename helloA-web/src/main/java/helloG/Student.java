@@ -1,33 +1,19 @@
 package helloG;
 
-import javax.xml.bind.annotation.*;
-import java.awt.*;
 import java.util.List;
 
-
-@XmlRootElement(name = "agh.edu.pl.soa.Student")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Student {
-
-    @XmlElement(name = "id", required = true)
     private String id;
-    @XmlElement(name = "first_name")
     private String first_name;
-    @XmlElement(name = "last_name")
     private String last_name;
-    @XmlElement(name = "email")
     private String email;
-    @XmlElementWrapper(name="courses")
-    @XmlElement(name = "course")
     private List<String> courses;
-    @XmlElement(name="avatar")
-    private Image avatar;
+    private String avatar;
 
-    // to return as XML need to have this constructor
     public Student() {
     }
 
-    public Student(String id, String first_name, String last_name, String email, List<String> courses, Image avatar) {
+    public Student(String id, String first_name, String last_name, String email, List<String> courses, String avatar) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -76,11 +62,11 @@ public class Student {
         this.courses = courses;
     }
 
-    public Image getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Image avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 }

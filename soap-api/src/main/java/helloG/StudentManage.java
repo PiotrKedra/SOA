@@ -1,23 +1,19 @@
 package helloG;
 
-import org.jboss.annotation.security.SecurityDomain;
 import org.jboss.ws.api.annotation.WebContext;
 import org.xml.sax.SAXException;
 
 import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,7 +35,7 @@ public class StudentManage {
     {
         StudentXML DB =  new StudentXML();
 
-        Student student = new Student(id, first_name, last_name, email, courses, null);
+        StudentSOAP student = new StudentSOAP(id, first_name, last_name, email, courses, null);
 
         try {
             DB.addStudent(student);
@@ -47,7 +43,7 @@ public class StudentManage {
             e.printStackTrace();
         }
 
-        return "Student added";
+        return "StudentSOAP added";
     }
 
     @WebMethod
@@ -71,7 +67,7 @@ public class StudentManage {
         } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
             e.printStackTrace();
         }
-        return "Student edited";
+        return "StudentSOAP edited";
     }
 
 }

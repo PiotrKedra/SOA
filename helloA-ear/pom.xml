@@ -49,7 +49,7 @@
         </dependency>
         <dependency>
             <groupId>helloG</groupId>
-            <artifactId>helloA-ejb</artifactId>
+            <artifactId>soap-api</artifactId>
             <type>ejb</type>
         </dependency>
     </dependencies>

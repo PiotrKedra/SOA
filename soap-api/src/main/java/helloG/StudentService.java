@@ -1,9 +1,7 @@
 package helloG;
 
-import org.jboss.ws.api.annotation.WebContext;
 import org.xml.sax.SAXException;
 
-import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
@@ -30,7 +28,7 @@ public class StudentService {
     public Image getAvatar(@WebParam(name = "id") String id){
         StudentXML DB = new StudentXML();
 
-        List<Student> students = null;
+        List<StudentSOAP> students = null;
         try {
             students = DB.getAllStudents();
         } catch (IOException | SAXException | ParserConfigurationException e) {
@@ -38,7 +36,7 @@ public class StudentService {
         }
 
         assert students != null;
-        for (Student student: students){
+        for (StudentSOAP student: students){
             if (student.getId().equals(id)){
                 return student.getAvatar();
             }
@@ -49,11 +47,11 @@ public class StudentService {
     @WebMethod
     @PermitAll
     @Lock(LockType.READ)
-    public Student getStudentById(@WebParam(name = "id") String id){
+    public StudentSOAP getStudentById(@WebParam(name = "id") String id){
 
         StudentXML DB = new StudentXML();
 
-        List<Student> students = null;
+        List<StudentSOAP> students = null;
         try {
             students = DB.getAllStudents();
         } catch (IOException | SAXException | ParserConfigurationException e) {
@@ -61,28 +59,28 @@ public class StudentService {
         }
 
         assert students != null;
-        for (Student student: students){
+        for (StudentSOAP student: students){
             if (student.getId().equals(id)){
                 return student;
             }
         }
-        return new Student(id, "There is no such a student ", "", "", null, null);
+        return new StudentSOAP(id, "There is no such a student ", "", "", null, null);
     }
 
     @WebMethod
     @PermitAll
     @Lock(LockType.READ)
-    public Student[] getAllStudents(){
+    public StudentSOAP[] getAllStudents(){
         StudentXML DB = new StudentXML();
 
-        List<Student> students = null;
+        List<StudentSOAP> students = null;
         try {
             students = DB.getAllStudents();
         } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }
 
-        Student[] stu = {};
+        StudentSOAP[] stu = {};
         assert students != null;
 
         return students.toArray(stu);
@@ -93,7 +91,7 @@ public class StudentService {
     @WebMethod
     @PermitAll
     @Lock(LockType.READ)
-    public List<Student> filtr_students(
+    public List<StudentSOAP> filtr_students(
             @WebParam(name = "id") String id,
             @WebParam(name = "first_name") String first_name,
             @WebParam(name = "last_name") String last_name,
@@ -101,7 +99,7 @@ public class StudentService {
             @WebParam(name = "course") List<String> courses)
     {
         StudentXML DB = new StudentXML();
-        List<Student> students = null;
+        List<StudentSOAP> students = null;
         try {
             students = DB.getAllStudents();
         } catch (IOException | SAXException | ParserConfigurationException e) {
@@ -117,9 +115,9 @@ public class StudentService {
         if(email.equals("?")) email = null;
         if(courses.size()==1 && courses.get(0).equals("?")) courses = null;
 
-        List<Student> matched_student = new ArrayList<>();
+        List<StudentSOAP> matched_student = new ArrayList<>();
         assert students != null;
-        for(Student student: students){
+        for(StudentSOAP student: students){
             boolean student_match = false;
             if(first_name!=null){
                 student_match = student.getFirst_name().equals(first_name);

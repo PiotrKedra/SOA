@@ -24,15 +24,15 @@ import java.util.List;
 
 public class StudentXML {
 
-    private final String data_xml_path = "D:\\code\\helloA\\helloA-ejb\\src\\main\\resources\\students.xml";
+    private final String data_xml_path = "D:\\code\\helloA\\soap-api\\src\\main\\resources\\students.xml";
 
-    public List<Student> getAllStudents() throws IOException, SAXException, ParserConfigurationException {
+    public List<StudentSOAP> getAllStudents() throws IOException, SAXException, ParserConfigurationException {
 
-        List<Student> result = new ArrayList<>();
+        List<StudentSOAP> result = new ArrayList<>();
 
         NodeList nodeList = getStudentsNodes();
 
-        ImageIcon icon = new ImageIcon("D:\\code\\helloA\\helloA-ejb\\src\\main\\resources\\avatar.jpg");
+        ImageIcon icon = new ImageIcon("D:\\code\\helloA\\soap-api\\src\\main\\resources\\avatar.jpg");
         Image image = icon.getImage();
 
         for (int i = 0; i < nodeList.getLength(); ++i) {
@@ -51,14 +51,14 @@ public class StudentXML {
                     courses.add(element.getElementsByTagName("course").item(j).getTextContent());
                 }
 
-                result.add(new Student(id, first_name, last_name, email, courses, image));
+                result.add(new StudentSOAP(id, first_name, last_name, email, courses, image));
             }
 
         }
         return result;
     }
 
-    public void addStudent(Student student) throws ParserConfigurationException, IOException, SAXException, TransformerConfigurationException {
+    public void addStudent(StudentSOAP student) throws ParserConfigurationException, IOException, SAXException, TransformerConfigurationException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(data_xml_path);
