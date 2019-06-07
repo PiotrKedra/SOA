@@ -37,7 +37,7 @@
         <module>helloA-web</module>
         <module>helloA-ear</module>
         <module>soap-connector</module>
-        <module>rest-connector</module>
+        <!--<module>rest-connector</module>-->
     </modules>
 
     <properties>
@@ -119,6 +119,20 @@
                 <version>${version.jboss.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>5.2.2.Final</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>5.2.2.Final</version>
+                <scope>provided</scope>
             </dependency>
 
         </dependencies>

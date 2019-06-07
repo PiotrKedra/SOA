@@ -15,21 +15,22 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<persistence version="2.1"
-   xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
         http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
    <persistence-unit name="primary">
-      <!-- If you are running in a production environment, add a managed 
-         data source, this example data source is just for development and testing! -->
-      <!-- The datasource is deployed as <EAR>/META-INF/helloA-ds.xml, you
-         can find it in the source at ear/src/main/application/META-INF/helloA-ds.xml -->
-      <jta-data-source>java:jboss/datasources/helloADS</jta-data-source>
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+      <jta-data-source>java:/pkedra3</jta-data-source>
+       <class>helloG.jpa.StudentX</class>
+       <class>helloG.jpa.TeacherX</class>
+       <class>helloG.jpa.CertificateX</class>
+       <class>helloG.jpa.ProjectX</class>
       <properties>
          <!-- Properties for Hibernate -->
-         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+         <property name="hibernate.hbm2ddl.auto" value="update" />
          <property name="hibernate.show_sql" value="false" />
+          <!--<property name="hibernate.archive.autodetection" value="class, hbm"/>-->
       </properties>
    </persistence-unit>
 </persistence>

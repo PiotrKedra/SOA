@@ -75,6 +75,7 @@ public class GetStudentService {
             @ApiResponse(code = 200, message = "ok"),
     })
     public Response getAll(){
+        System.out.println("StudentX: " + studentDAO.getX());
         return Response.ok(studentDAO.getAllStudents())
                 .build();
     }

@@ -1,9 +1,10 @@
 package helloG;
 
+import helloG.jpa.StudentX;
 import helloG.resources.StudentNotFoundException;
 
 import javax.inject.Singleton;
-import java.io.File;
+import javax.persistence.*;
 import java.util.*;
 
 import java.util.List;
@@ -12,6 +13,12 @@ import java.util.List;
 public class StudentDAO {
 
     private final String AVATAR_PATH = "D:\\code\\helloA\\soap-api\\src\\main\\resources\\avatar.jpg";
+
+    @PersistenceContext(unitName = "primary")
+    EntityManager entityManager;
+
+    private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+
 
     private List<Student> students;
 
@@ -23,6 +30,25 @@ public class StudentDAO {
         students.add(new Student("4","Pablito", "Kedr", "pkedr@gmail.com", Arrays.asList("SOA", "PIS", "SW"), AVATAR_PATH));
         students.add(new Student("5","Ziomek", "Kedr", "pkedr@gmail.com", Arrays.asList("SOA", "PIS", "SW"), AVATAR_PATH));
         students.add(new Student("6","Reszta", "Kedr", "pkedr@gmail.com", Arrays.asList("SOA", "PIS", "SW"), AVATAR_PATH));
+    }
+
+    public List<StudentX> getX(){
+        entityManager = entityManagerFactory.createEntityManager();
+
+        StudentX student = new StudentX();
+        student.setEmail("wtf@wp.pl");
+        student.setName("Kokobo");
+        student.setSurname("Ziom");
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(student);
+        entityManager.getTransaction().commit();
+
+        Query query = entityManager.createQuery("select name from StudentX");
+        System.out.println(query.getResultList());
+        entityManager.close();
+
+        return Collections.singletonList(student);
     }
 
     public void add(Student student){
@@ -54,8 +80,8 @@ public class StudentDAO {
             student.setLast_name(lastName);
         if(email!=null)
             student.setEmail(email);
-        if(courses!=null && courses.size()==0)
-            student.setCourses(courses);
+//        if(courses!=null && courses.size()==0)
+//            student.setCourses(courses);
 
 
 
@@ -102,11 +128,11 @@ public class StudentDAO {
             }
             if(courses!=null){
                 for (String course: courses){
-                    if (student.getCourses().contains(course)) student_match = true;
-                    else {
-                        student_match = false;
-                        break;
-                    }
+//                    if (student.getCourses().contains(course)) student_match = true;
+//                    else {
+//                        student_match = false;
+//                        break;
+//                    }
                 }
             }
 
